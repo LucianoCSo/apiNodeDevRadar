@@ -2,7 +2,7 @@ const axios = require('axios');
 const Dev = require('../modeus/Dev');
 const parseStringAsArray = require('../utils/parseStringAsArray');
 
-module.exports = {
+module.exports = ({
     async index(request, response){
         const devs = await Dev.find();
         return response.json(devs);
@@ -31,6 +31,7 @@ module.exports = {
             location
         });
     }
-    return response.json(dev);
+    console.log({dev})
+    return response.json({dev});
     }
-}
+});
