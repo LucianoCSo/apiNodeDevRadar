@@ -21,7 +21,7 @@ module.exports = ({
             type: 'Point',
             coordinates: [longitude, latitude],
         }
-
+        debugger
         dev = await Dev.create({
             name, 
             avatar_url, 
