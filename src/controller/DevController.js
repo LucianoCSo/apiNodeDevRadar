@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Dev = require('../modeus/Dev');
 const parseStringAsArray = require('../utils/parseStringAsArray');
+const {findConnections, sendMessager } = require('../webSocket');
 
 module.exports = ({
     async index(request, response){
@@ -30,8 +31,13 @@ module.exports = ({
             techs: techsArray,
             location
         });
+
+        const sendSocketMessageTo = findConnections(
+            { latitude, longitude },
+            techsArray,
+        )
+        sendMessager(sendSocketMessageTo, 'NewDev', dev);
     }
-    console.log({dev})
     return response.json({dev});
     }
 });
